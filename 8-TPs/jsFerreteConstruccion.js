@@ -9,6 +9,8 @@ var radio;
 var rectanguloAlambre;
 var circuloAlambre;
 var contrapiso;
+var bolsaCemento;
+var bolsaCal;
 function Rectangulo () 
 {
     ancho=parseInt(document.getElementById("Ancho").value);
@@ -24,5 +26,10 @@ function Circulo ()
 }
 function Materiales () 
 {
-	
+    ancho=parseInt(document.getElementById("Ancho").value);
+    largo=parseInt(document.getElementById("Largo").value);
+    contrapiso=parseInt(ancho*largo);
+    bolsaCemento=parseInt(contrapiso*2);
+    bolsaCal=parseInt(contrapiso*3);
+    alert("Usted necesita "+bolsaCal+" bolsas de cal y "+bolsaCemento+" bolsas de cemento, para un area de "+contrapiso+" m2");
 }
