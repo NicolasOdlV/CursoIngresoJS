@@ -22,7 +22,8 @@ function comenzar()
 function verificar()
 {
   miNumero=document.getElementById("numero").value;
-	if(miNumero==numeroSecreto){
+if(contadorIntentos<10){
+	if(miNumero==numeroSecreto && contadorIntentos!=0){
     alert("Usted es un ganador!!!");
   }else{
     if(miNumero<numeroSecreto){
@@ -31,6 +32,10 @@ function verificar()
       alert("Se pasó...")
     }
   contadorIntentos++;
+  
   }
-	document.getElementById("intentos").value=contadorIntentos;
+  document.getElementById("intentos").value=contadorIntentos;
+}else{
+  alert("HA PERDIDO");
+}
 }
