@@ -1,5 +1,5 @@
 function Mostrar()
-{
+{//jafhuaf
 //tomo la edad  
 var laHora = document.getElementById('hora').value;
     laHora=parseInt(laHora);
