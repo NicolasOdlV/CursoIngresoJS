@@ -19,7 +19,7 @@ function comenzar()
 
 }
 
-function verificar()
+function verificar()//tengo que arreglar la trampa  para q no sea tan evidente
 {
   miNumero=document.getElementById("numero").value;
 if(contadorIntentos<10){
