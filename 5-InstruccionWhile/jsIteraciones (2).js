@@ -1,11 +1,11 @@
 function Mostrar()
 {
-	var num=10;
-
-while (num>0) {
-	console.log(num);
-	num--;
+var numero=10;
+while (numero>0) {
+	console.log(numero);
+	numero--;
 }
+
 
 
 }//FIN DE LA FUNCIÓN
