@@ -55,6 +55,11 @@ for(var i=0;i<3;i++){
     sueldo=parseInt(sueldo);
     document.getElementById("Sueldo").value=sueldo;
 }while(isNaN(sueldo)||sueldo<8000);    
+if (sexo=="m") {
+ acumuladorSueldosM+=sueldo;
+ }else if(sexo=="f"){
+ acumuladorSueldosF+=sueldo;
+  }
 
 // pedir y validar estado civil
 do{
@@ -106,11 +111,6 @@ do{
     }
 }while(nacionalidad!="a"&&nacionalidad!="e"&&nacionalidad!="n");
 
-if (sexo=="m") {
- acumuladorSueldosM+=sueldo;
- }else if(sexo=="f"){
- acumuladorSueldosF+=sueldo;
-  }
 }//llave de cierre for
 
 // crear switch para responder cada item
@@ -138,6 +138,7 @@ switch (mensaje) {
                  alert("El sueldo promedio masculino es: "+promedioM);
             promedioF=(acumuladorSueldosF/contadorF)*0.75;            
                  alert("El sueldo promedio femenina es: "+promedioF);
+                 
                        break;      
           default:
               break;
