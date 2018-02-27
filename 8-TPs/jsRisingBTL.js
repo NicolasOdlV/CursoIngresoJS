@@ -20,22 +20,26 @@ function ComenzarIngreso ()
     var contadorF=0;
     var contadorM=0;
     //acumuladores de sueldos
+    var acumuladorSueldosF=0;
+    var acumuladorSueldosM=0;
     var max=8000;
+    var promedioM;
+    var promedioF;
     
     
 
 
-for(var i=0;i<2;i++){
+for(var i=0;i<3;i++){
 
    mensaje=alert("Ingrese los datos de la persona "+(i+1));
-
+// pedir y validar edad
     do{
     edad=prompt("Ingrese su edad");
     edad=parseInt(edad);
     document.getElementById("Edad").value=edad;
     }
     while(isNaN(edad)||(edad<18||edad>90));
-
+// pedir y validar sexo
     do{
     sexo=prompt("Ingrese su sexo 'f'(femenino), 'm'(masculino) ");
     document.getElementById("Sexo").value=sexo;
@@ -45,79 +49,102 @@ for(var i=0;i<2;i++){
         contadorF++;
     }  
     }while(sexo!='f'&&sexo!='m');
-
+// pedir y validar sueldo
     do{
-    sueldo=prompt("Ingrese el sueldo de la persona"+(i+1));
+    sueldo=prompt("Ingrese el sueldo de la persona");
     sueldo=parseInt(sueldo);
-    document.getElementById("Sueldo").value=sueldo; 
-    }while(isNaN(sueldo)||sueldo<8000);    
+    document.getElementById("Sueldo").value=sueldo;
+}while(isNaN(sueldo)||sueldo<8000);    
 
-    do{
+// pedir y validar estado civil
+do{
     estadoCivil=prompt("Ingrese el numero segun corresponda"+" 1-Soltero "+"2-Casado "+"3-Divorciado "+" 4-Viudo");
     estadoCivil=parseInt(estadoCivil);
     switch (estadoCivil) {
         case 1:
-                document.getElementById("EstadoCivil").value="Soltero";
-            break;
+        document.getElementById("EstadoCivil").value="Soltero";
+        break;
         case 2: 
-                document.getElementById("EstadoCivil").value="Casado";
-            break;    
+        document.getElementById("EstadoCivil").value="Casado";
+        break;    
         case 3:
-                document.getElementById("EstadoCivil").value="Divorciado";
-            break;    
+        document.getElementById("EstadoCivil").value="Divorciado";
+        break;    
         case 4:
-                document.getElementById("EstadoCivil").value="Viudo";
-            break;                    
+        document.getElementById("EstadoCivil").value="Viudo";
+        break;                    
         default:
-            break;
+        break;
     }
-    }while(isNaN(estadoCivil)||(estadoCivil>4));
-
-    do{
-        nLegajo=prompt("Ingrese nro de legajo");
-        nLegajo=parseInt(nLegajo);
-        if(nLegajo<1000){
-            document.getElementById("Legajo").value=(nLegajo+1000);
-        }else{
+}while(isNaN(estadoCivil)||(estadoCivil>4));
+// pedir y validar nro de legajo
+do{
+    nLegajo=prompt("Ingrese nro de legajo");
+    nLegajo=parseInt(nLegajo);
+    if(nLegajo<1000){
+        document.getElementById("Legajo").value=(nLegajo+1000);
+    }else{
         document.getElementById("Legajo").value=nLegajo;
-        }
-    }while(isNaN(nLegajo)||nLegajo>9999);
-
-    do{
+    }
+}while(isNaN(nLegajo)||nLegajo>9999);
+// pedir y validar nacionalidad
+do{
     nacionalidad=prompt("Ingrese la letra segun corresponda a su nacionalidad "+" a- Argentino "+" e- Extranjero "+" n- Nacionalizado");
     switch (nacionalidad) {
         case "a":
-                    document.getElementById("Nacionalidad").value="Argentino";
-
-            break;
+        document.getElementById("Nacionalidad").value="Argentino";
+        
+        break;
         case "e":
-                    document.getElementById("Nacionalidad").value="Extranjero";
-            break;                   
+        document.getElementById("Nacionalidad").value="Extranjero";
+        break;                   
         case "n":
-                    document.getElementById("Nacionalidad").value="Nacionalizado";
-            break;                    
+        document.getElementById("Nacionalidad").value="Nacionalizado";
+        break;                    
         default:
-            break;
+        break;
     }
-    }while(nacionalidad!="a"&&nacionalidad!="e"&&nacionalidad!="n");
+}while(nacionalidad!="a"&&nacionalidad!="e"&&nacionalidad!="n");
 
-                    }//llave de cierre for
+if (sexo=="m") {
+ acumuladorSueldosM+=sueldo;
+ }else if(sexo=="f"){
+ acumuladorSueldosF+=sueldo;
+  }
+}//llave de cierre for
 
-      // crear switch para responder cada item
-
-      mensaje=prompt('Ingrese el numero que desee');
-      
-swit
+// crear switch para responder cada item
+mensaje=prompt("Ingrese el numero que desee: "+" 1-El sueldo maximo de los nacionalizados "+" 2-El sueldo maximo de sexo f y argentina "+" 3-El sueldo promedio m, femenino y ambos");
+mensaje=parseInt(mensaje);
+switch (mensaje) {
+    case 1:
     if(nacionalidad=='n'){
-                        if(sueldo>max){
-                            max=sueldo;
-                            alert(max);
-                        }
-    if(sexo=='f'){
-                        if(sueldo)
+        if(sueldo>max){
             max=sueldo;
+        }
+        alert("El sueldo maximo es: "+max);
+    }
+    break;
+    case 2:
+    if(sexo=="f"&&nacionalidad=="a"){
+        if(sueldo>max){
+            max=sueldo;
+        }
+        alert("El sueldo maximo de sexo f y argentina es: "+max);
+    }
+    break;
+    case 3:
+            promedioM=(acumuladorSueldosM/contadorM)*0.75;
+                 alert("El sueldo promedio masculino es: "+promedioM);
+            promedioF=(acumuladorSueldosF/contadorF)*0.75;            
+                 alert("El sueldo promedio femenina es: "+promedioF);
+                       break;      
+          default:
+              break;
+      }
+
     }                    
-}
 
 
-}
+
+
